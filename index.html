@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const getDaejeonTravel = () =>{
+      const xhr = new XMLHttpRequest();
+      console.dir(xhr);
+      xhr.open("GET","http://apis.data.go.kr/6300000/openapi2022/tourspot/gettourspot?serviceKey=%2BB%2F1oMdT4N%2FCcpBL1U35jMZOSGuWV8Po6gQvanL9rb%2BI%2BrLJs21Yxi2zxMDy0JrOg47Am%2BeVwy8SAiFAjpQYZw%3D%3D&pageNo=1&numOfRows=50",true);
+
+      xhr.addEventListener("load",()=>{
+        if(xhr.status === 200){
+          console.log("데이터를 받은 후 조회");
+          console.dir(xhr);
+          const result = JSON.parse(xhr.responseText);
+          const arr = result.response.body.items;
+          arr.forEach((element)=>{
+            console.log(element.tourspotNm)
+          })
+          // console.dir(result.response.body.items[0].tourspotNm)
+        }
+      });
+      xhr.send()
+    }
+    getDaejeonTravel()
+  </script>
+</body>
+</html>
