@@ -6,6 +6,8 @@
   <title>Document</title>
 </head>
 <body>
+  <div id="root">
+  </div>
   <script>
     const getDaejeonTravel = () =>{
       const xhr = new XMLHttpRequest();
@@ -18,9 +20,19 @@
           console.dir(xhr);
           const result = JSON.parse(xhr.responseText);
           const arr = result.response.body.items;
+          const root = document.getElementById("root");
+          root.innerHTML=`<h1 style="text-align:center">`+"대전에 있는 문화관광지"+`</h1><hr>`
+
+          const ol = document.createElement('ol');
+          root.appendChild(ol);
+          
+          const list = [];
           arr.forEach((element)=>{
-            console.log(element.tourspotNm)
+            list.push(`<h3 style="text-align:center"><li>${element.tourspotNm}</li></h3>`);
           })
+          ol.innerHTML=list.join('')
+
+          
           // console.dir(result.response.body.items[0].tourspotNm)
         }
       });
