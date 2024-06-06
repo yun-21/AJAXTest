@@ -10,12 +10,12 @@
     const getOworld = () => {
       const xhr = new XMLHttpRequest();
       console.dir(xhr);
-      xhr.open("GET", "http://apis.data.go.kr/1741000/LocalGovernment/getLocalGoverment?serviceKey=%2BB%2F1oMdT4N%2FCcpBL1U35jMZOSGuWV8Po6gQvanL9rb%2BI%2BrLJs21Yxi2zxMDy0JrOg47Am%2BeVwy8SAiFAjpQYZw%3D%3D",true);
+      xhr.open("GET", "https://apis.data.go.kr/1741000/LocalGovernment/getLocalGovernment?serviceKey=%2BB%2F1oMdT4N%2FCcpBL1U35jMZOSGuWV8Po6gQvanL9rb%2BI%2BrLJs21Yxi2zxMDy0JrOg47Am%2BeVwy8SAiFAjpQYZw%3D%3D&pageNo=1&numOfRows=10",true);
       xhr.addEventListener("load",()=>{
         if(xhr.status===200){
           console.log("데이터를 받은 후 조회")
           console.dir(xhr);
-          const result = JSON.parse(xhr.responseText);
+          const result = xhr.responseXML;
           console.log(result);
         }
       })
